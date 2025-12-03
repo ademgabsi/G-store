@@ -1,16 +1,77 @@
-# store
 
-A new Flutter project.
+# G-Store (G-Store Flutter)
 
-## Getting Started
+Simple cross-platform Flutter app that simulates a films & series store (G-Store) with static data.
 
-This project is a starting point for a Flutter application.
+**Overview**
+- **Purpose**: Demo application showcasing a small e-commerce-like UI for films/series with favorites and a cart.
+- **State management**: `provider` (ChangeNotifier).
+- **Platforms**: Linux desktop, Android, iOS, Web (if Chrome installed).
 
-A few resources to get you started if this is your first Flutter project:
+**Features**
+- **Home grid**: Browse media tiles (films & series).
+- **Details**: View long descriptions, add to favorites and cart.
+- **Favorites**: Manage favorite items.
+- **Cart**: Add/remove items and view totals.
+- **Auth screens**: Splash, Login, SignUp, Reset (simulated flows).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Quick Start**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Prerequisites:
+- Flutter SDK (stable). See https://docs.flutter.dev/get-started/install
+- For Linux desktop: `clang`, `libgtk-3-dev` (installed on the dev machine)
+- For Android: Android SDK + `cmdline-tools` and accepted licenses
+- Optional for web: Google Chrome (or set `CHROME_EXECUTABLE`)
+
+Clone and install dependencies:
+```bash
+git clone https://github.com/ademgabsi/G-store.git
+cd G-store/store
+flutter pub get
+```
+
+Run the app (Linux desktop):
+```bash
+flutter run -d linux
+```
+
+Run on Android (device/emulator):
+```bash
+flutter run -d <device-id>
+```
+
+Run tests and static analysis:
+```bash
+flutter analyze
+flutter test
+```
+
+**Project Structure (important files)**
+- `lib/main.dart`: App entry point and Provider setup.
+- `lib/models/media.dart`: `Media` model and static dataset.
+- `lib/providers/store_provider.dart`: Favorites and cart state (ChangeNotifier).
+- `lib/screens/`: App screens (splash, auth, home, details, favorites, cart, profile).
+- `lib/widgets/`: Reusable UI widgets (media card, cart item).
+- `lib/utils/theme.dart`: App theme configuration.
+- `test/widget_test.dart`: Unit tests (StoreProvider).
+
+**Notes & Troubleshooting**
+- If tests fail due to SDK issues, try cleaning and reprecaching Flutter:
+```bash
+flutter clean
+rm -rf $(flutter sdk-path)/bin/cache
+flutter precache
+```
+- To fix Android toolchain issues, install Android `cmdline-tools` and run:
+```bash
+flutter doctor --android-licenses
+```
+
+**Contributing**
+- Contributions welcome. Open an issue or a PR with a clear change description.
+
+**License**
+- No license specified. Add a license file if you plan to publish.
+
+---
+Updated: December 2025 — generated after a repository review and environment checks.
